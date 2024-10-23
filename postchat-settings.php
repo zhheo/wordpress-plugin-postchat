@@ -200,6 +200,15 @@ function postchat_addButton_render() {
     <?php
 }
 
+function postchat_summaryTheme_render() {
+  $options = postchat_get_options();
+  ?>
+  <input type='text' name='postchat_options[summaryTheme]' value='<?php echo esc_attr($options['summaryTheme']); ?>'>
+  <p class="description">切换文章摘要主题，详情请见 <a href="https://postchat.zhheo.com/theme.html" target="_blank">https://postchat.zhheo.com/theme.html</a></p>
+  <?php
+}
+
+
 function postchat_options_page() {
     ?>
     <form action='options.php' method='post'>
@@ -323,6 +332,15 @@ function postchat_settings_init() {
         'postchat',
         'postchat_section_summary'
     );
+
+    add_settings_field(
+      'postchat_summaryTheme',
+      '摘要主题',
+      'postchat_summaryTheme_render',
+      'postchat',
+      'postchat_section_summary'
+    );
+  
 
     // 智能对话设置
     add_settings_section(

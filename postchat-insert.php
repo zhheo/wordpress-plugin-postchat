@@ -47,6 +47,7 @@ function postchat_enqueue_custom_js() {
         let tianliGPT_blacklist = '<?php echo esc_js($options['blacklist']); ?>';
         let tianliGPT_wordLimit = '<?php echo esc_js($options['wordLimit']); ?>';
         let tianliGPT_typingAnimate = <?php echo $options['typingAnimate'] ? 'true' : 'false'; ?>;
+        let tianliGPT_theme = '<?php echo esc_js($options['summaryTheme']); ?>';
         var postChatConfig = {
             backgroundColor: "<?php echo esc_js($options['backgroundColor']); ?>",
             bottom: "<?php echo esc_js($options['bottom']); ?>",

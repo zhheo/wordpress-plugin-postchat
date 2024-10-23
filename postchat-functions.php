@@ -27,7 +27,8 @@ function postchat_get_default_options() {
         'showInviteLink' => true,
         'userTitle' => 'PostChat',
         'userDesc' => '如果你对网站的内容有任何疑问，可以来问我哦～',
-        'addButton' => true
+        'addButton' => true,
+        'summaryTheme' => '',
     ];
 }
 
