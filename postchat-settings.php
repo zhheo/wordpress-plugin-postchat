@@ -448,22 +448,24 @@ add_action('admin_init', 'postchat_settings_init');
 
 // 步骤 5：处理选项验证
 function postchat_options_validate($input) {
-    $defaults = postchat_get_default_options();
-    $validated = [];
+  $defaults = postchat_get_default_options();
+  $validated = [];
 
-    foreach ($defaults as $key => $default) {
-        if (isset($input[$key])) {
-            if (is_bool($default)) {
-                $validated[$key] = $input[$key] ? 1 : 0;
-            } else {
-                $validated[$key] = sanitize_text_field($input[$key]);
-            }
-        } else {
-            $validated[$key] = $default;
-        }
-    }
+  foreach ($defaults as $key => $default) {
+      if (isset($input[$key])) {
+          if (is_bool($default)) {
+              // 如果输入存在，则勾选值为 1
+              $validated[$key] = $input[$key] ? 1 : 0;
+          } else {
+              $validated[$key] = sanitize_text_field($input[$key]);
+          }
+      } else {
+          // 如果输入不存在且默认值为布尔类型，设置为 0
+          $validated[$key] = is_bool($default) ? 0 : $default;
+      }
+  }
 
-    return $validated;
+  return $validated;
 }
 
 function postchat_section_account_cb() {
