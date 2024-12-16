@@ -140,7 +140,7 @@ function postchat_frameWidth_render() {
     $options = postchat_get_options();
     ?>
     <input type='text' name='postchat_options[frameWidth]' value='<?php echo esc_attr($options['frameWidth']); ?>'>
-    <p class="description">调整聊天界面框架的宽度</p>
+    <p class="description">调整聊天界面框架的宽度（仅在iframe模式下生效）</p>
     <?php
 }
 
@@ -148,7 +148,7 @@ function postchat_frameHeight_render() {
     $options = postchat_get_options();
     ?>
     <input type='text' name='postchat_options[frameHeight]' value='<?php echo esc_attr($options['frameHeight']); ?>'>
-    <p class="description">调整聊天界面框架的高度</p>
+    <p class="description">调整聊天界面框架的高度（仅在iframe模式下生效）</p>
     <?php
 }
 
@@ -232,7 +232,7 @@ function postchat_defaultChatQuestions_render() {
     $questions = is_array($options['defaultChatQuestions']) ? implode("\n", $options['defaultChatQuestions']) : '';
     ?>
     <textarea name='postchat_options[defaultChatQuestions]' rows='5' cols='50'><?php echo esc_textarea($questions); ?></textarea>
-    <p class="description">设置默认的聊天问题，每行一个问题</p>
+    <p class="description">设置默认的聊天问题，每行一个问题（仅在Magic模式下生效）</p>
     <?php
 }
 
@@ -241,7 +241,7 @@ function postchat_defaultSearchQuestions_render() {
     $questions = is_array($options['defaultSearchQuestions']) ? implode("\n", $options['defaultSearchQuestions']) : '';
     ?>
     <textarea name='postchat_options[defaultSearchQuestions]' rows='5' cols='50'><?php echo esc_textarea($questions); ?></textarea>
-    <p class="description">设置默认的搜索问题，每行一个问题</p>
+    <p class="description">设置默认的搜索问题，每行一个问题（仅在Magic模式下生效）</p>
     <?php
 }
 
@@ -444,7 +444,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_frameWidth',
-        '框架宽度（仅iframe模式下有效）',
+        '框架宽度',
         'postchat_frameWidth_render',
         'postchat',
         'postchat_section_chat'
@@ -452,7 +452,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_frameHeight',
-        '框架高度（仅iframe模式下有效）',
+        '框架高度',
         'postchat_frameHeight_render',
         'postchat',
         'postchat_section_chat'
@@ -508,7 +508,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_userIcon',
-        '自定义图标（仅Magic模式下有效）',
+        '自定义图标',
         'postchat_userIcon_render',
         'postchat',
         'postchat_section_chat'
@@ -516,7 +516,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_defaultChatQuestions',
-        '默认聊天问题（仅Magic模式下有效）',
+        '默认聊天问题',
         'postchat_defaultChatQuestions_render',
         'postchat',
         'postchat_section_chat'
@@ -524,7 +524,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_defaultSearchQuestions',
-        '默认搜索问题（仅Magic模式下有效）',
+        '默认搜索问题',
         'postchat_defaultSearchQuestions_render',
         'postchat',
         'postchat_section_chat'
