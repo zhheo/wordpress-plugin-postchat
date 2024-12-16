@@ -5,7 +5,7 @@ Plugin URI: https://ai.tianli0.top/
 Description: 文章智能摘要与AI对话插件
 Requires at least: 5.8
 Requires PHP: 5.6.20
-Version: 2.0.0
+Version: 2.1.0
 Author: 张洪Heo
 Author URI: https://zhheo.com/
 License: GPLv2

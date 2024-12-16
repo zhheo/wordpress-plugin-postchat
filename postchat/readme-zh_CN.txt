@@ -6,7 +6,7 @@ Donate link: https://rewards.zhheo.com/
 Requires at least: 2.8
 Tested up to: 5.8
 Requires PHP: 5.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -88,11 +88,11 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 4. PostChat的摘要AI功能，可以为文章生成摘要在文章顶部展示
   
 == Changelog ==
-= 2.0 =
+= 2.1.0 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.1.0 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
 

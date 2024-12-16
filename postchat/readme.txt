@@ -6,7 +6,7 @@ Donate link: https://rewards.zhheo.com/
 Requires at least: 2.8
 Tested up to: 6.7
 Requires PHP: 5.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -61,11 +61,6 @@ See the developer documentation for more details: https://postchat.zhheo.com/adv
 
 PostChat is built by [Zhang Hong Heo](https://github.com/zhheo) and [Tianli](https://github.com/TIANLI0), for technical support, please contact: zhheo@qq.com (reply within one working day)
   
-== Installation ==
-  
-1. Upload the plugin folder to your /wp-content/plugins/ folder.
-1. Go to the **Plugins** page and activate the plugin.
-  
 == Frequently Asked Questions ==
   
 = How do I use this plugin? =
@@ -88,11 +83,11 @@ Using PostChat member users enjoy unlimited tokens credit of Abstract AI and sup
 4. PostChat's Abstract AI feature, which can generate abstracts for posts to be displayed at the top of the post.
   
 == Changelog ==
-= 2.0 =
+= 2.1.0 =
 The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 
 == Upgrade Notice ==
 
-= 2.0 =
-全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
+= 2.1.0 =
+The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 
