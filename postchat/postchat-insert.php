@@ -14,15 +14,22 @@ add_filter('the_content', 'postchat_add_custom_class');
 
 // 在所有页面插入自定义 JS 代码
 function postchat_enqueue_custom_js() {
-    $options = postchat_get_options(); // 使用辅助函数获取选项
+    $options = postchat_get_options();
 
-    // 确保选项存在
     if (!$options) {
         return;
     }
 
     $enableSummary = $options['enableSummary'];
     $enableAI = $options['enableAI'];
+
+    // 注册和加载样式表
+    wp_enqueue_style(
+        'postchat-summary-style',
+        esc_url($options['summaryStyle']),
+        array(),
+        '1.0.0'
+    );
 
     if ($enableSummary && $enableAI) {
         $script_url = "https://ai.tianli0.top/static/public/postChatUser_summary.min.js";
@@ -35,10 +42,9 @@ function postchat_enqueue_custom_js() {
     }
 
     // Debug 输出，确保选项正确传递和判断（生产环境中请移除）
-    echo '<!-- PostChat Debug: Options: ' . json_encode($options) . ' -->';
-    echo '<!-- PostChat Debug: Script URL: ' . $script_url . ' -->';
+    echo '<!-- PostChat Debug: Options: ' . wp_json_encode($options) . ' -->';
+    echo '<!-- PostChat Debug: Script URL: ' . esc_url($script_url) . ' -->';
     ?>
-    <link rel="stylesheet" href="<?php echo esc_url($options['summaryStyle']); ?>">
     <script>
         let tianliGPT_key = '<?php echo esc_js($options['key']); ?>';
         let tianliGPT_postSelector = '<?php echo esc_js($options['postSelector']); ?>';
@@ -65,8 +71,8 @@ function postchat_enqueue_custom_js() {
             beginningText: "<?php echo esc_js($options['beginningText']); ?>",
             userMode: "<?php echo esc_js($options['userMode']); ?>",
             userIcon: "<?php echo esc_js($options['userIcon']); ?>",
-            defaultChatQuestions: <?php echo json_encode($options['defaultChatQuestions']); ?>,
-            defaultSearchQuestions: <?php echo json_encode($options['defaultSearchQuestions']); ?>
+            defaultChatQuestions: <?php echo wp_json_encode($options['defaultChatQuestions']); ?>,
+            defaultSearchQuestions: <?php echo wp_json_encode($options['defaultSearchQuestions']); ?>
         };
     </script>
     <script data-postChat_key="<?php echo esc_js($options['key']); ?>" src="<?php echo esc_url($script_url); ?>"></script>
