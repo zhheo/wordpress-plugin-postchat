@@ -61,11 +61,6 @@ PostChat的WordPress插件，也支持文章摘要用户使用
 
 PostChat由[张洪Heo](https://github.com/zhheo)与[Tianli](https://github.com/TIANLI0)共同构建，技术支持请联系：zhheo@qq.com（一个工作日内回复）
   
-== Installation ==
-  
-1.将插件文件夹上传到 /wp-content/plugins/ 文件夹。
-1.进入**插件**页面并激活插件。
-  
 == Frequently Asked Questions ==
   
 = 我如何使用这个插件？ =
