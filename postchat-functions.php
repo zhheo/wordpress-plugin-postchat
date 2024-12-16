@@ -29,6 +29,10 @@ function postchat_get_default_options() {
         'userDesc' => '如果你对网站的内容有任何疑问，可以来问我哦～',
         'addButton' => true,
         'summaryTheme' => '',
+        'userMode' => 'magic',
+        'userIcon' => 'https://ai.tianli0.top/static/img/PostChat.webp',
+        'defaultChatQuestions' => [],
+        'defaultSearchQuestions' => [],
     ];
 }
 

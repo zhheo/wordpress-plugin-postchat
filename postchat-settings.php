@@ -208,6 +208,42 @@ function postchat_summaryTheme_render() {
   <?php
 }
 
+function postchat_userMode_render() {
+    $options = postchat_get_options();
+    ?>
+    <select name='postchat_options[userMode]'>
+        <option value='magic' <?php selected($options['userMode'], 'magic'); ?>>Magic</option>
+        <option value='iframe' <?php selected($options['userMode'], 'iframe'); ?>>Iframe</option>
+    </select>
+    <p class="description">选择PostChat的显示模式</p>
+    <?php
+}
+
+function postchat_userIcon_render() {
+    $options = postchat_get_options();
+    ?>
+    <input type='text' name='postchat_options[userIcon]' value='<?php echo esc_attr($options['userIcon']); ?>'>
+    <p class="description">自定义PostChat图标（仅在Magic模式下生效）</p>
+    <?php
+}
+
+function postchat_defaultChatQuestions_render() {
+    $options = postchat_get_options();
+    $questions = is_array($options['defaultChatQuestions']) ? implode("\n", $options['defaultChatQuestions']) : '';
+    ?>
+    <textarea name='postchat_options[defaultChatQuestions]' rows='5' cols='50'><?php echo esc_textarea($questions); ?></textarea>
+    <p class="description">设置默认的聊天问题，每行一个问题</p>
+    <?php
+}
+
+function postchat_defaultSearchQuestions_render() {
+    $options = postchat_get_options();
+    $questions = is_array($options['defaultSearchQuestions']) ? implode("\n", $options['defaultSearchQuestions']) : '';
+    ?>
+    <textarea name='postchat_options[defaultSearchQuestions]' rows='5' cols='50'><?php echo esc_textarea($questions); ?></textarea>
+    <p class="description">设置默认的搜索问题，每行一个问题</p>
+    <?php
+}
 
 function postchat_options_page() {
     ?>
@@ -359,6 +395,14 @@ function postchat_settings_init() {
     );
 
     add_settings_field(
+      'postchat_userMode',
+      '显示模式',
+      'postchat_userMode_render',
+      'postchat',
+      'postchat_section_chat'
+    );
+
+    add_settings_field(
         'postchat_backgroundColor',
         '背景颜色',
         'postchat_backgroundColor_render',
@@ -392,7 +436,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_width',
-        '宽度',
+        '按钮宽度',
         'postchat_width_render',
         'postchat',
         'postchat_section_chat'
@@ -400,7 +444,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_frameWidth',
-        '框架宽度',
+        '框架宽度（仅iframe模式下有效）',
         'postchat_frameWidth_render',
         'postchat',
         'postchat_section_chat'
@@ -408,7 +452,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_frameHeight',
-        '框架高度',
+        '框架高度（仅iframe模式下有效）',
         'postchat_frameHeight_render',
         'postchat',
         'postchat_section_chat'
@@ -461,29 +505,57 @@ function postchat_settings_init() {
         'postchat',
         'postchat_section_chat'
     );
+
+    add_settings_field(
+        'postchat_userIcon',
+        '自定义图标（仅Magic模式下有效）',
+        'postchat_userIcon_render',
+        'postchat',
+        'postchat_section_chat'
+    );
+
+    add_settings_field(
+        'postchat_defaultChatQuestions',
+        '默认聊天问题（仅Magic模式下有效）',
+        'postchat_defaultChatQuestions_render',
+        'postchat',
+        'postchat_section_chat'
+    );
+
+    add_settings_field(
+        'postchat_defaultSearchQuestions',
+        '默认搜索问题（仅Magic模式下有效）',
+        'postchat_defaultSearchQuestions_render',
+        'postchat',
+        'postchat_section_chat'
+    );
 }
 add_action('admin_init', 'postchat_settings_init');
 
 // 步骤 5：处理选项验证
 function postchat_options_validate($input) {
-  $defaults = postchat_get_default_options();
-  $validated = [];
+    $defaults = postchat_get_default_options();
+    $validated = [];
 
-  foreach ($defaults as $key => $default) {
-      if (isset($input[$key])) {
-          if (is_bool($default)) {
-              // 如果输入存在，则勾选值为 1
-              $validated[$key] = $input[$key] ? 1 : 0;
-          } else {
-              $validated[$key] = sanitize_text_field($input[$key]);
-          }
-      } else {
-          // 如果输入不存在且默认值为布尔类型，设置为 0
-          $validated[$key] = is_bool($default) ? 0 : $default;
-      }
-  }
+    foreach ($defaults as $key => $default) {
+        if (isset($input[$key])) {
+            if ($key === 'defaultChatQuestions' || $key === 'defaultSearchQuestions') {
+                // 处理多行文本框输入
+                $questions = explode("\n", $input[$key]);
+                $questions = array_map('trim', $questions);
+                $questions = array_filter($questions);
+                $validated[$key] = array_values($questions);
+            } elseif (is_bool($default)) {
+                $validated[$key] = $input[$key] ? 1 : 0;
+            } else {
+                $validated[$key] = sanitize_text_field($input[$key]);
+            }
+        } else {
+            $validated[$key] = is_bool($default) ? 0 : $default;
+        }
+    }
 
-  return $validated;
+    return $validated;
 }
 
 function postchat_section_account_cb() {

@@ -62,7 +62,11 @@ function postchat_enqueue_custom_js() {
             userTitle: "<?php echo esc_js($options['userTitle']); ?>",
             userDesc: "<?php echo esc_js($options['userDesc']); ?>",
             addButton: <?php echo $options['addButton'] ? 'true' : 'false'; ?>,
-            beginningText: "<?php echo esc_js($options['beginningText']); ?>"
+            beginningText: "<?php echo esc_js($options['beginningText']); ?>",
+            userMode: "<?php echo esc_js($options['userMode']); ?>",
+            userIcon: "<?php echo esc_js($options['userIcon']); ?>",
+            defaultChatQuestions: <?php echo json_encode($options['defaultChatQuestions']); ?>,
+            defaultSearchQuestions: <?php echo json_encode($options['defaultSearchQuestions']); ?>
         };
     </script>
     <script data-postChat_key="<?php echo esc_js($options['key']); ?>" src="<?php echo esc_url($script_url); ?>"></script>
