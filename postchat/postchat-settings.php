@@ -540,8 +540,10 @@ function postchat_options_validate($input) {
     foreach ($defaults as $key => $default) {
         if (isset($input[$key])) {
             if ($key === 'defaultChatQuestions' || $key === 'defaultSearchQuestions') {
+                // 确保输入是字符串
+                $input_value = is_array($input[$key]) ? implode("\n", $input[$key]) : $input[$key];
                 // 处理多行文本框输入
-                $questions = explode("\n", $input[$key]);
+                $questions = explode("\n", $input_value);
                 $questions = array_map('trim', $questions);
                 $questions = array_filter($questions);
                 $validated[$key] = array_values($questions);
