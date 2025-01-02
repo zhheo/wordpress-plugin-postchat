@@ -12,8 +12,8 @@ function postchat_add_custom_class($content) {
 }
 add_filter('the_content', 'postchat_add_custom_class');
 
-// 在所有页面插入自定义 JS 代码
-function postchat_enqueue_custom_js() {
+// 在所有页面插入自定义 JS 和 CSS
+function postchat_enqueue_scripts() {
     $options = postchat_get_options();
 
     if (!$options) {
@@ -24,13 +24,15 @@ function postchat_enqueue_custom_js() {
     $enableAI = $options['enableAI'];
 
     // 注册和加载样式表
-    wp_enqueue_style(
+    wp_register_style(
         'postchat-summary-style',
         esc_url($options['summaryStyle']),
         array(),
         '1.0.0'
     );
+    wp_enqueue_style('postchat-summary-style');
 
+    // 确定要加载的脚本URL
     if ($enableSummary && $enableAI) {
         $script_url = "https://ai.tianli0.top/static/public/postChatUser_summary.min.js";
     } elseif ($enableSummary) {
@@ -41,43 +43,57 @@ function postchat_enqueue_custom_js() {
         return;
     }
 
-    // Debug 输出，确保选项正确传递和判断（生产环境中请移除）
-    echo '<!-- PostChat Debug: Options: ' . wp_json_encode($options) . ' -->';
-    echo '<!-- PostChat Debug: Script URL: ' . esc_url($script_url) . ' -->';
-    ?>
-    <script>
-        let tianliGPT_key = '<?php echo esc_js($options['key']); ?>';
-        let tianliGPT_postSelector = '<?php echo esc_js($options['postSelector']); ?>';
-        let tianliGPT_Title = '<?php echo esc_js($options['title']); ?>';
-        let tianliGPT_postURL = '<?php echo esc_js($options['postURL']); ?>';
-        let tianliGPT_blacklist = '<?php echo esc_js($options['blacklist']); ?>';
-        let tianliGPT_wordLimit = '<?php echo esc_js($options['wordLimit']); ?>';
-        let tianliGPT_typingAnimate = <?php echo $options['typingAnimate'] ? 'true' : 'false'; ?>;
-        let tianliGPT_theme = '<?php echo esc_js($options['summaryTheme']); ?>';
-        var postChatConfig = {
-            backgroundColor: "<?php echo esc_js($options['backgroundColor']); ?>",
-            bottom: "<?php echo esc_js($options['bottom']); ?>",
-            left: "<?php echo esc_js($options['left']); ?>",
-            fill: "<?php echo esc_js($options['fill']); ?>",
-            width: "<?php echo esc_js($options['width']); ?>",
-            frameWidth: "<?php echo esc_js($options['frameWidth']); ?>",
-            frameHeight: "<?php echo esc_js($options['frameHeight']); ?>",
-            defaultInput: <?php echo $options['defaultInput'] ? 'true' : 'false'; ?>,
-            upLoadWeb: <?php echo $options['upLoadWeb'] ? 'true' : 'false'; ?>,
-            showInviteLink: <?php echo $options['showInviteLink'] ? 'true' : 'false'; ?>,
-            userTitle: "<?php echo esc_js($options['userTitle']); ?>",
-            userDesc: "<?php echo esc_js($options['userDesc']); ?>",
-            addButton: <?php echo $options['addButton'] ? 'true' : 'false'; ?>,
-            beginningText: "<?php echo esc_js($options['beginningText']); ?>",
-            userMode: "<?php echo esc_js($options['userMode']); ?>",
-            userIcon: "<?php echo esc_js($options['userIcon']); ?>",
-            defaultChatQuestions: <?php echo wp_json_encode($options['defaultChatQuestions']); ?>,
-            defaultSearchQuestions: <?php echo wp_json_encode($options['defaultSearchQuestions']); ?>
-        };
-    </script>
-    <script data-postChat_key="<?php echo esc_js($options['key']); ?>" src="<?php echo esc_url($script_url); ?>"></script>
-    <?php
+    // 先注册和加载主脚本
+    wp_enqueue_script(
+        'postchat-main',
+        esc_url($script_url),
+        array(),
+        '1.0.0',
+        true
+    );
+
+    // 然后添加配置变量
+    wp_add_inline_script(
+        'postchat-main',
+        'let tianliGPT_key = "' . esc_js($options['key']) . '";
+        let tianliGPT_postSelector = "' . esc_js($options['postSelector']) . '";
+        let tianliGPT_Title = "' . esc_js($options['title']) . '";
+        let tianliGPT_postURL = "' . esc_js($options['postURL']) . '";
+        let tianliGPT_blacklist = "' . esc_js($options['blacklist']) . '";
+        let tianliGPT_wordLimit = "' . esc_js($options['wordLimit']) . '";
+        let tianliGPT_typingAnimate = ' . ($options['typingAnimate'] ? 'true' : 'false') . ';
+        let tianliGPT_theme = "' . esc_js($options['summaryTheme']) . '";
+        var postChatConfig = ' . wp_json_encode([
+            'backgroundColor' => $options['backgroundColor'],
+            'bottom' => $options['bottom'],
+            'left' => $options['left'],
+            'fill' => $options['fill'],
+            'width' => $options['width'],
+            'frameWidth' => $options['frameWidth'],
+            'frameHeight' => $options['frameHeight'],
+            'defaultInput' => (bool) $options['defaultInput'],
+            'upLoadWeb' => (bool) $options['upLoadWeb'],
+            'showInviteLink' => (bool) $options['showInviteLink'],
+            'userTitle' => $options['userTitle'],
+            'userDesc' => $options['userDesc'],
+            'addButton' => (bool) $options['addButton'],
+            'beginningText' => $options['beginningText'],
+            'userMode' => $options['userMode'],
+            'userIcon' => $options['userIcon'],
+            'defaultChatQuestions' => $options['defaultChatQuestions'],
+            'defaultSearchQuestions' => $options['defaultSearchQuestions']
+        ]) . ';',
+        'before'
+    );
+
+    // 为主脚本添加自定义属性
+    add_filter('script_loader_tag', function($tag, $handle) use ($options) {
+        if ('postchat-main' === $handle) {
+            return str_replace('<script', '<script data-postChat_key="' . esc_attr($options['key']) . '"', $tag);
+        }
+        return $tag;
+    }, 10, 2);
 }
-add_action('wp_footer', 'postchat_enqueue_custom_js');
+add_action('wp_enqueue_scripts', 'postchat_enqueue_scripts');
 
 ?>
