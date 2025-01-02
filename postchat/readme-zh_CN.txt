@@ -4,9 +4,9 @@ Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
 Requires at least: 2.8
-Tested up to: 5.8
+Tested up to: 6.7
 Requires PHP: 5.4
-Stable tag: 2.1.0
+Stable tag: 2.1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -81,13 +81,27 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 2. PostChat的知识库对话功能
 3. PostChat的搜索功能
 4. PostChat的摘要AI功能，可以为文章生成摘要在文章顶部展示
+
+== External services ==
+
+此插件将网页内容连接到TianliGPT获取AI摘要信息。每次加载网页时，它都会发送当前网页中经过网站站长的规则筛选处理的部分的内容给TianliGPT，并获取来自TianliGPT的文章摘要总结内容服务。用户需要使用来自PostChat的账户Key才可以使用。（官网地址：https://postchat.zhheo.com/）
+
+服务涉及到的外部资源链接：
+- https://ai.tianli0.top/static/public/postChatUser_summary.min.css
+- https://ai.tianli0.top/static/public/postChatUser_summary.min.js
+- https://ai.tianli0.top/static/public/tianli_gpt.min.js
+-	https://ai.tianli0.top/static/public/postChatUser.min.js
+
+此服务由“洪绘科技”提供。
+
+[用户协议](https://postchat.zhheo.com/infouser.html) [隐私政策](https://postchat.zhheo.com/privacy.html)
   
 == Changelog ==
-= 2.1.0 =
+= 2.1.2 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
 
 == Upgrade Notice ==
 
-= 2.1.0 =
+= 2.1.2 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
 

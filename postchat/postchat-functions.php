@@ -1,5 +1,8 @@
 <?php
-// postchat-functions.php
+// 确保直接访问文件时退出
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 // 定义默认选项
 function postchat_get_default_options() {
@@ -42,4 +45,3 @@ function postchat_get_options() {
     $options = get_option('postchat_options', []);
     return wp_parse_args($options, $defaults);
 }
-?>

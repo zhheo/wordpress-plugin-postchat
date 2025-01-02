@@ -6,7 +6,7 @@ Donate link: https://rewards.zhheo.com/
 Requires at least: 2.8
 Tested up to: 6.7
 Requires PHP: 5.4
-Stable tag: 2.1.0
+Stable tag: 2.1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -81,13 +81,27 @@ Using PostChat member users enjoy unlimited tokens credit of Abstract AI and sup
 2. PostChat's Knowledge Base dialog function
 3. PostChat's search function
 4. PostChat's Abstract AI feature, which can generate abstracts for posts to be displayed at the top of the post.
+
+== External services ==
+
+This plugin connects web page content to TianliGPT to obtain AI-generated summary information. Every time a web page is loaded, it sends a portion of the content (filtered and processed based on the website owner’s rules) to TianliGPT and retrieves article summary services. Users need an account key from PostChat to access this service. (Official website: https://postchat.zhheo.com/)
+
+External resource links involved in the service:
+- https://ai.tianli0.top/static/public/postChatUser_summary.min.css
+- https://ai.tianli0.top/static/public/postChatUser_summary.min.js
+- https://ai.tianli0.top/static/public/tianli_gpt.min.js
+-	https://ai.tianli0.top/static/public/postChatUser.min.js
+
+This service is provided by “Honghui Technology.”
+
+[User Agreement](https://postchat.zhheo.com/infouser.html) [Privacy Policy](https://postchat.zhheo.com/privacy.html)
   
 == Changelog ==
-= 2.1.0 =
+= 2.1.2 =
 The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 
 == Upgrade Notice ==
 
-= 2.1.0 =
+= 2.1.2 =
 The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 

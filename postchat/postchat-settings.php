@@ -1,4 +1,8 @@
 <?php
+// 确保直接访问文件时退出
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 // 引入辅助函数
 require_once plugin_dir_path(__FILE__) . 'postchat-functions.php';
@@ -579,5 +583,3 @@ function postchat_activate() {
     $default_options = postchat_get_default_options();
     add_option('postchat_options', $default_options);
 }
-
-?>

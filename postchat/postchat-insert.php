@@ -1,4 +1,8 @@
 <?php
+// 确保直接访问文件时退出
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 // 引入辅助函数
 require_once plugin_dir_path(__FILE__) . 'postchat-functions.php';
@@ -95,5 +99,3 @@ function postchat_enqueue_scripts() {
     }, 10, 2);
 }
 add_action('wp_enqueue_scripts', 'postchat_enqueue_scripts');
-
-?>
