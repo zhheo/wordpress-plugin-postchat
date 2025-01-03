@@ -3,10 +3,8 @@
 Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
-Requires at least: 2.8
 Tested up to: 6.7
-Requires PHP: 5.4
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -94,14 +92,14 @@ External resource links involved in the service:
 
 This service is provided by “Honghui Technology.”
 
-[User Agreement](https://postchat.zhheo.com/infouser.html) [Privacy Policy](https://postchat.zhheo.com/privacy.html)
+[User Agreement](https://ai.tianli0.top/static/Agreement.html) [Privacy Policy](https://ai.tianli0.top/static/PrivacyPolice.html)
   
 == Changelog ==
-= 2.1.2 =
+= 2.1.3 =
 The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 
 == Upgrade Notice ==
 
-= 2.1.2 =
+= 2.1.3 =
 The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
 
