@@ -4,7 +4,7 @@ Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
 Tested up to: 6.7
-Stable tag: 2.1.3
+Stable tag: 2.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -95,10 +95,17 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 [用户协议](https://ai.tianli0.top/static/Agreement.html) [隐私政策](https://ai.tianli0.top/static/PrivacyPolice.html)
   
 == Changelog ==
+= 2.2 =
+优化了插件引入方式，避免添加dom
+此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
+
 = 2.1.3 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
 
 == Upgrade Notice ==
+= 2.2 =
+优化了插件引入方式，避免添加dom
+此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
 
 = 2.1.3 =
 全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
