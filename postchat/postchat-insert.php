@@ -7,36 +7,14 @@ if (!defined('ABSPATH')) {
 // 引入辅助函数
 require_once plugin_dir_path(__FILE__) . 'postchat-functions.php';
 
-// 添加新的函数来处理 post_class
-function postchat_add_post_class($classes, $class, $post_id) {
-    // 修改判断条件，适配更多场景
-    if (!is_admin() && (is_single() || is_page()) && get_post_type($post_id) == 'post') {
-        $classes[] = 'postchat_postcontent';
-        
-        // 如果是区块主题，也给 entry-content 添加类名
-        if (wp_is_block_theme()) {
-            add_filter('render_block', function($block_content, $block) {
-                if ($block['blockName'] === 'core/post-content') {
-                    return str_replace('class="', 'class="postchat_postcontent ', $block_content);
-                }
-                return $block_content;
-            }, 10, 2);
-        }
+// 添加自定义 class 到文章内容
+function postchat_add_custom_class($content) {
+    if (is_single()) {
+        $content = '<div id="postchat_postcontent">' . $content . '</div>';
     }
-    return $classes;
+    return $content;
 }
-add_filter('post_class', 'postchat_add_post_class', 10, 3);
-
-// 添加新的过滤器来处理区块内容
-function postchat_add_block_class() {
-    add_filter('render_block_core/post-content', function($block_content) {
-        if (is_single() && !is_admin()) {
-            return str_replace('class="', 'class="postchat_postcontent ', $block_content);
-        }
-        return $block_content;
-    });
-}
-add_action('init', 'postchat_add_block_class');
+add_filter('the_content', 'postchat_add_custom_class');
 
 // 在所有页面插入自定义 JS 和 CSS
 function postchat_enqueue_scripts() {
@@ -47,9 +25,9 @@ function postchat_enqueue_scripts() {
     }
 
     // 检查并更新旧版本的选择器设置
-    if ($options['postSelector'] === '#postchat_postcontent') {
-        $options['postSelector'] = '.postchat_postcontent';
-        update_option('postchat_options', $options);
+    if ($options['postSelector'] === '.postchat_postcontent') {
+      $options['postSelector'] = '#postchat_postcontent';
+      update_option('postchat_options', $options);
     }
 
     $enableSummary = $options['enableSummary'];
