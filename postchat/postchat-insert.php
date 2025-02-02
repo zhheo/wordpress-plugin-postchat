@@ -73,6 +73,7 @@ function postchat_enqueue_scripts() {
         let tianliGPT_wordLimit = "' . esc_js($options['wordLimit']) . '";
         let tianliGPT_typingAnimate = ' . ($options['typingAnimate'] ? 'true' : 'false') . ';
         let tianliGPT_theme = "' . esc_js($options['summaryTheme']) . '";
+        let tianliGPT_injectDom = "' . esc_js($options['injectDom']) . '";
         var postChatConfig = ' . wp_json_encode([
             'backgroundColor' => $options['backgroundColor'],
             'bottom' => $options['bottom'],

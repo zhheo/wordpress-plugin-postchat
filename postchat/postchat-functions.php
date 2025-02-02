@@ -34,6 +34,7 @@ function postchat_get_default_options() {
         'summaryTheme' => '',
         'userMode' => 'magic',
         'userIcon' => 'https://ai.tianli0.top/static/img/PostChat.webp',
+        'injectDom' => '',
         'defaultChatQuestions' => [],
         'defaultSearchQuestions' => [],
     ];

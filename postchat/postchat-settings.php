@@ -88,7 +88,7 @@ function postchat_beginningText_render() {
     $options = postchat_get_options();
     ?>
     <input type='text' name='postchat_options[beginningText]' value='<?php echo esc_attr($options['beginningText']); ?>'>
-    <p class="description">文章摘要开头的文本，默认为“这篇文章介绍了”。</p>
+    <p class="description">文章摘要开头的文本，默认为"这篇文章介绍了"。</p>
     <?php
 }
 
@@ -249,6 +249,14 @@ function postchat_defaultSearchQuestions_render() {
     <?php
 }
 
+function postchat_injectDom_render() {
+    $options = postchat_get_options();
+    ?>
+    <input type='text' name='postchat_options[injectDom]' value='<?php echo esc_attr($options['injectDom']); ?>'>
+    <p class="description">设置文章摘要插入的位置。例如：.ai-content。留空则插入到文章开头。</p>
+    <?php
+}
+
 function postchat_options_page() {
     ?>
     <form action='options.php' method='post'>
@@ -380,7 +388,14 @@ function postchat_settings_init() {
       'postchat',
       'postchat_section_summary'
     );
-  
+
+    add_settings_field(
+        'postchat_injectDom',
+        '摘要插入位置',
+        'postchat_injectDom_render',
+        'postchat',
+        'postchat_section_summary'
+    );
 
     // 智能对话设置
     add_settings_section(
