@@ -4,7 +4,7 @@ Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
 Tested up to: 6.7
-Stable tag: 2.3
+Stable tag: 2.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -95,6 +95,9 @@ This service is provided by “Honghui Technology.”
 [User Agreement](https://ai.tianli0.top/static/Agreement.html) [Privacy Policy](https://ai.tianli0.top/static/PrivacyPolice.html)
   
 == Changelog ==
+= 2.4 =
+支持自定义插入位置
+
 = 2.3 =
 修复一些情况下无法显示摘要的问题
 
