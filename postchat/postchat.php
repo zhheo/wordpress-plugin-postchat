@@ -18,3 +18,5 @@ if (!defined('ABSPATH')) {
 
 require_once plugin_dir_path(__FILE__) . 'postchat-settings.php';
 require_once plugin_dir_path(__FILE__) . 'postchat-insert.php'; 
+require_once plugin_dir_path(__FILE__) . 'postchat-article-listener.php';
+require_once plugin_dir_path(__FILE__) . 'postchat-summary-display.php'; 
