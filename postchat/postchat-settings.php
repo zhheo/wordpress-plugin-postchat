@@ -15,8 +15,16 @@ function postchat_key_render() {
     <p class="description">
         使用PostChat的用户请前往 <a href="https://ai.tianli0.top/" target="_blank">获取 KEY</a>，
         只使用文章摘要的用户前往 <a href="https://summary.zhheo.com/" target="_blank">获取 KEY</a>。
-        示例的Key不支持文章摘要和自定义的知识库问答，但可以使用作者的知识库对话
+        示例的Key不支持文章摘要和自定义的知识库问答，但可以使用作者的知识库对话。此值可以公开。
     </p>
+    <?php
+}
+
+function postchat_apiSecret_render() {
+    $options = postchat_get_options();
+    ?>
+    <input type='text' name='postchat_options[apiSecret]' value='<?php echo esc_attr($options['apiSecret']); ?>'>
+    <p class="description">服务器端请求文章摘要的密钥，与文章摘要服务通信时进行身份验证，确保安全性。请妥善保管，不要泄露。</p>
     <?php
 }
 
@@ -25,6 +33,14 @@ function postchat_enableSummary_render() {
     ?>
     <input type='checkbox' name='postchat_options[enableSummary]' <?php checked($options['enableSummary'], 1); ?> value='1'>
     <p class="description">开启文章摘要需要在 <a href="https://summary.zhheo.com/" target="_blank">绑定你的网站</a></p>
+    <?php
+}
+
+function postchat_privateSummary_render() {
+    $options = postchat_get_options();
+    ?>
+    <input type='checkbox' name='postchat_options[privateSummary]' <?php checked($options['privateSummary'], 1); ?> value='1'>
+    <p class="description">开启后，将在服务器端生成摘要并保存到文章中，无需用户浏览器执行JavaScript。需配合API Secret使用。</p>
     <?php
 }
 
@@ -301,6 +317,14 @@ function postchat_settings_init() {
         'postchat_section_account'
     );
 
+    add_settings_field(
+        'postchat_apiSecret',
+        'API Secret',
+        'postchat_apiSecret_render',
+        'postchat',
+        'postchat_section_account'
+    );
+
     // 文章摘要设置
     add_settings_section(
         'postchat_section_summary',
@@ -313,6 +337,14 @@ function postchat_settings_init() {
         'postchat_enableSummary',
         '开启文章摘要',
         'postchat_enableSummary_render',
+        'postchat',
+        'postchat_section_summary'
+    );
+
+    add_settings_field(
+        'postchat_privateSummary',
+        '私有化文章摘要',
+        'postchat_privateSummary_render',
         'postchat',
         'postchat_section_summary'
     );

@@ -8,7 +8,9 @@ if (!defined('ABSPATH')) {
 function postchat_get_default_options() {
     return [
         'key' => '70b649f150276f289d1025508f60c5f58a',
+        'apiSecret' => '',
         'enableSummary' => true,
+        'privateSummary' => false,
         'postSelector' => '.postchat_postcontent',
         'title' => '文章摘要',
         'summaryStyle' => 'https://ai.tianli0.top/static/public/postChatUser_summary.min.css',
