@@ -109,16 +109,36 @@ function postchat_article_publish_listener($post_ID, $post, $update) {
  * @param mixed $data 附加数据（可选）
  */
 function postchat_log($message, $data = null) {
-    if (defined('WP_DEBUG') && WP_DEBUG) {
+    // 只在WP_DEBUG模式下并且用户允许记录日志时执行
+    if (defined('WP_DEBUG') && WP_DEBUG && apply_filters('postchat_enable_logging', false)) {
+        $log_message = 'PostChat: ' . $message;
+        
         if ($data !== null) {
             if (is_array($data) || is_object($data)) {
-                $data_str = print_r($data, true);
+                $data_str = wp_json_encode($data, JSON_UNESCAPED_UNICODE);
             } else {
                 $data_str = (string) $data;
             }
-            error_log('PostChat: ' . $message . ' - ' . $data_str);
-        } else {
-            error_log('PostChat: ' . $message);
+            $log_message .= ' - ' . $data_str;
+        }
+        
+        // 使用WordPress内置的日志功能
+        if (defined('WP_DEBUG_LOG') && WP_DEBUG_LOG) {
+            // 使用WordPress提供的日志函数，避免直接使用error_log
+            if (function_exists('wp_syslog')) {
+                // WordPress 5.9+使用wp_syslog
+                wp_syslog(LOG_DEBUG, $log_message);
+            } else {
+                // 使用WordPress内部日志机制，而不是直接调用error_log
+                $debug_log_path = WP_CONTENT_DIR . '/debug.log';
+                if (is_string(WP_DEBUG_LOG) && WP_DEBUG_LOG != '1') {
+                    $debug_log_path = WP_DEBUG_LOG;
+                }
+                // 使用文件写入方式记录日志
+                $timestamp = gmdate('Y-m-d H:i:s');
+                $log_entry = "[{$timestamp}] {$log_message}\n";
+                @file_put_contents($debug_log_path, $log_entry, FILE_APPEND);
+            }
         }
     }
 }
@@ -317,25 +337,20 @@ function postchat_add_article_summary($post_ID, $content_hash = '') {
         // 更新文章摘要元数据
         update_post_meta($post_ID, '_postchat_summary', $summary);
         
-        // 使用直接数据库更新以避免触发额外的钩子
-        global $wpdb;
-        $result = $wpdb->update(
-            $wpdb->posts,
-            array('post_excerpt' => $summary),
-            array('ID' => $post_ID),
-            array('%s'),
-            array('%d')
+        // 使用WordPress API更新文章摘要，而不是直接数据库查询
+        $post_data = array(
+            'ID' => $post_ID,
+            'post_excerpt' => $summary
         );
         
-        if ($result === false) {
-            postchat_log('数据库更新摘要失败', array(
+        $result = wp_update_post($post_data, true);
+        
+        if (is_wp_error($result)) {
+            postchat_log('更新文章摘要失败', array(
                 'post_id' => $post_ID,
-                'db_error' => $wpdb->last_error
+                'error' => $result->get_error_message()
             ));
         } else {
-            // 清除缓存
-            clean_post_cache($post_ID);
-            
             postchat_log('已成功为文章添加摘要', array(
                 'post_id' => $post_ID,
                 'summary' => $summary
@@ -414,7 +429,7 @@ function postchat_maintenance_cleanup() {
         foreach ($crons as $timestamp => $cron) {
             // 超过24小时未执行的任务视为过期
             if ($timestamp < ($now - 86400) && isset($cron['postchat_add_summary_event'])) {
-                postchat_log('清理过期的摘要任务', array('timestamp' => date('Y-m-d H:i:s', $timestamp)));
+                postchat_log('清理过期的摘要任务', array('timestamp' => gmdate('Y-m-d H:i:s', $timestamp)));
                 unset($crons[$timestamp]['postchat_add_summary_event']);
                 if (empty($crons[$timestamp])) {
                     unset($crons[$timestamp]);
