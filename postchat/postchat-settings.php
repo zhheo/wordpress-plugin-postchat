@@ -40,7 +40,7 @@ function postchat_privateSummary_render() {
     $options = postchat_get_options();
     ?>
     <input type='checkbox' name='postchat_options[privateSummary]' <?php checked($options['privateSummary'], 1); ?> value='1'>
-    <p class="description">开启后，将在服务器端生成摘要并保存到文章中，无需用户浏览器执行JavaScript。需配合API Secret使用。</p>
+    <p class="description">开启后，将在服务器端生成摘要并保存到文章的原生摘要中。需要填写API Secret</p>
     <?php
 }
 
