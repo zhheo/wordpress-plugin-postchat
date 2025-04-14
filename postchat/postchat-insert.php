@@ -44,11 +44,11 @@ function postchat_enqueue_scripts() {
 
     // 确定要加载的脚本URL
     if ($enableSummary && $enableAI) {
-        $script_url = "https://ai.tianli0.top/static/public/postChatUser_summary.min.js";
+        $script_url = "https://ai.zhheo.com/static/public/postChatUser_summary.min.js";
     } elseif ($enableSummary) {
-        $script_url = "https://ai.tianli0.top/static/public/tianli_gpt.min.js";
+        $script_url = "https://ai.zhheo.com/static/public/tianli_gpt.min.js";
     } elseif ($enableAI) {
-        $script_url = "https://ai.tianli0.top/static/public/postChatUser.min.js";
+        $script_url = "https://ai.zhheo.com/static/public/postChatUser.min.js";
     } else {
         return;
     }
@@ -62,6 +62,16 @@ function postchat_enqueue_scripts() {
         true
     );
 
+    // 获取文章摘要内容（如果启用了私有化摘要）
+    $summary = '';
+    if (is_single() && isset($options['privateSummary']) && $options['privateSummary']) {
+        global $post;
+        if ($post) {
+            $post_id = $post->ID;
+            $summary = get_post_meta($post_id, '_postchat_summary', true);
+        }
+    }
+
     // 然后添加配置变量
     wp_add_inline_script(
         'postchat-main',
@@ -74,6 +84,7 @@ function postchat_enqueue_scripts() {
         let tianliGPT_typingAnimate = ' . ($options['typingAnimate'] ? 'true' : 'false') . ';
         let tianliGPT_theme = "' . esc_js($options['summaryTheme']) . '";
         let tianliGPT_injectDom = "' . esc_js($options['injectDom']) . '";
+        let tianliGPT_summary = "' . esc_js($summary) . '";
         var postChatConfig = ' . wp_json_encode([
             'backgroundColor' => $options['backgroundColor'],
             'bottom' => $options['bottom'],

@@ -24,7 +24,7 @@ function postchat_apiSecret_render() {
     $options = postchat_get_options();
     ?>
     <input type='text' name='postchat_options[apiSecret]' value='<?php echo esc_attr($options['apiSecret']); ?>'>
-    <p class="description">服务器端请求文章摘要的密钥，与文章摘要服务通信时进行身份验证，确保安全性。请妥善保管，不要泄露。</p>
+    <p class="description">服务器端请求文章摘要的密钥，与文章摘要服务通信时进行身份验证，确保安全性。请妥善保管，不要泄露。<a href="https://ai.zhheo.com/console/settings" target="_blank">获取API Secret</a></p>
     <?php
 }
 
@@ -40,7 +40,7 @@ function postchat_privateSummary_render() {
     $options = postchat_get_options();
     ?>
     <input type='checkbox' name='postchat_options[privateSummary]' <?php checked($options['privateSummary'], 1); ?> value='1'>
-    <p class="description">开启后，将在服务器端生成摘要并保存到文章的原生摘要中。需要填写API Secret</p>
+    <p class="description">开启后，在创建或更新文章的时候生成摘要，并保存到文章的原生摘要中。</p>
     <?php
 }
 
