@@ -3,8 +3,8 @@
 Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
-Tested up to: 6.7
-Stable tag: 2.4
+Tested up to: 6.8
+Stable tag: 3.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
@@ -95,6 +95,9 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 [用户协议](https://ai.tianli0.top/static/Agreement.html) [隐私政策](https://ai.tianli0.top/static/PrivacyPolice.html)
   
 == Changelog ==
+= 3.0 =
+支持私有化摘要
+
 = 2.4 =
 支持自定义插入位置
 
