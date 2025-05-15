@@ -311,7 +311,7 @@ function postchat_settings_init() {
 
     add_settings_field(
         'postchat_key',
-        '账户KEY',
+        '项目KEY',
         'postchat_key_render',
         'postchat',
         'postchat_section_account'

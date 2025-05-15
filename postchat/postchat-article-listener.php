@@ -260,10 +260,24 @@ function postchat_get_summary_from_api($title, $content, $url) {
         return false;
     }
     
-    postchat_log('成功获取摘要', $data['data']['summary']);
+    $summary = $data['data']['summary'];
+    
+    // 如果配置了开头文字，尝试替换默认开头
+    if (!empty($options['beginningText'])) {
+        // 替换"这篇文章XX了"的模式
+        if (preg_match('/^这篇文章[\x{4e00}-\x{9fa5}]{1,2}了/u', $summary)) {
+            $summary = preg_replace('/^这篇文章[\x{4e00}-\x{9fa5}]{1,2}了/u', $options['beginningText'], $summary);
+        }
+        // 替换"这篇文章通过"的模式
+        else if (preg_match('/^这篇文章通过/', $summary)) {
+            $summary = preg_replace('/^这篇文章通过/', $options['beginningText'] . '通过', $summary);
+        }
+    }
+    
+    postchat_log('成功获取摘要', $summary);
     
     // 返回摘要内容
-    return $data['data']['summary'];
+    return $summary;
 }
 
 /**

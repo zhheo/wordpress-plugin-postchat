@@ -63,7 +63,7 @@ PostChat由[张洪Heo](https://github.com/zhheo)与[Tianli](https://github.com/T
   
 = 我如何使用这个插件？ =
   
-安装插件成功后，前往 https://ai.tianli0.top/ 去注册一个账号，在开通会员后即可获取到账户KEY，进入插件设置界面替换账户KEY为自己的账户KEY即可。
+安装插件成功后，前往 https://ai.tianli0.top/ 去注册一个账号，在开通会员后即可获取到项目KEY，进入插件设置界面替换项目KEY为自己的项目KEY即可。
 产品使用文档：https://postchat.zhheo.com/newUser.html
 
 = PostChat是如何定价的？ =
@@ -82,7 +82,7 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 
 == External services ==
 
-此插件将网页内容连接到TianliGPT获取AI摘要信息。每次加载网页时，它都会发送当前网页中经过网站站长的规则筛选处理的部分的内容给TianliGPT，并获取来自TianliGPT的文章摘要总结内容服务。用户需要使用来自PostChat的账户Key才可以使用。（官网地址：https://postchat.zhheo.com/）
+此插件将网页内容连接到TianliGPT获取AI摘要信息。每次加载网页时，它都会发送当前网页中经过网站站长的规则筛选处理的部分的内容给TianliGPT，并获取来自TianliGPT的文章摘要总结内容服务。用户需要使用来自PostChat的项目KEY才可以使用。（官网地址：https://postchat.zhheo.com/）
 
 服务涉及到的外部资源链接：
 - https://ai.tianli0.top/static/public/postChatUser_summary.min.css
@@ -109,7 +109,7 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
 
 = 2.1.3 =
-全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
+全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 项目KEY 才能正常使用。
 
 == Upgrade Notice ==
 = 2.3 =
@@ -120,5 +120,5 @@ PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
 
 = 2.1.3 =
-全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 账户KEY 才能正常使用。
+全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 项目KEY 才能正常使用。
 
