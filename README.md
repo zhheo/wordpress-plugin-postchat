@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://ai.tianli0.top/" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.zhheo.com/i/2024/06/21/6674f00f3eb9d.webp" alt="icon"/>
+        <img src="https://github.com/user-attachments/assets/63202383-660f-421a-aacd-ea01d675f968" alt="icon"/>
     </a>
     <h1 align="center">PostChat</h1>
     <span>PostChat的WordPress插件，也支持文章摘要用户使用</span>
@@ -8,7 +8,7 @@
 
 ## 简介
 
-![quickshot.webp](https://img.zhheo.com/i/2024/06/21/6674f0133b5b3.webp)
+![quickshot.webp](https://github.com/user-attachments/assets/27668d1d-4e29-4692-81ec-e616a7910e7b)
 
 PostChat是一个专为中小开发者与站长开发的AI增强工具，可以在网站中插入聊天机器人和智能摘要生成的功能。本项目提供专为WordPress博客系统的插件安装包，你可以在WordPress博客中安装使用，避免了插入代码的繁琐。
 
@@ -45,13 +45,14 @@ PostChat是一个专为中小开发者与站长开发的AI增强工具，可以�
 
 点击左侧的“设置”，选择“PostChat”
 
-![help1.webp](https://img.zhheo.com/i/2024/07/09/668cb3e669711.webp)
+![image](https://github.com/user-attachments/assets/5e257530-597c-465b-8ec7-d22d0cc7d851)
+
 
 ## 主题适配
 
 此插件支持所有的PostChat开发API，提供主题开发者对于PostChat的控制能力。包括深色模式切换：`postChatUser.setPostChatTheme('dark')`；聊天窗口输入框：`postChatUser.setPostChatInput(content)`等。
 
-详见开发者文档：https://postchat.zhheo.com/advanced/theme.html
+详见开发者文档：https://ai.zhheo.com/docs/advanced/theme.html
 
 ## 开发者
 
