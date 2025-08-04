@@ -39,6 +39,7 @@ function postchat_get_default_options() {
         'injectDom' => '',
         'defaultChatQuestions' => [],
         'defaultSearchQuestions' => [],
+        'hotWords' => true,
     ];
 }
 

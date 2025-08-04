@@ -103,7 +103,8 @@ function postchat_enqueue_scripts() {
             'userMode' => $options['userMode'],
             'userIcon' => $options['userIcon'],
             'defaultChatQuestions' => $options['defaultChatQuestions'],
-            'defaultSearchQuestions' => $options['defaultSearchQuestions']
+            'defaultSearchQuestions' => $options['defaultSearchQuestions'],
+            'hotWords' => (bool) $options['hotWords']
         ]) . ';',
         'before'
     );

@@ -273,6 +273,14 @@ function postchat_injectDom_render() {
     <?php
 }
 
+function postchat_hotWords_render() {
+    $options = postchat_get_options();
+    ?>
+    <input type='checkbox' name='postchat_options[hotWords]' <?php checked($options['hotWords'], 1); ?> value='1'>
+    <p class="description">开启后，为文章的复杂词语添加详细解释，点击后触发搜索。</p>
+    <?php
+}
+
 function postchat_options_page() {
     ?>
     <form action='options.php' method='post'>
@@ -579,6 +587,14 @@ function postchat_settings_init() {
         'postchat_defaultSearchQuestions_render',
         'postchat',
         'postchat_section_chat'
+    );
+
+    add_settings_field(
+      'postchat_hotWords',
+      '文章热词',
+      'postchat_hotWords_render',
+      'postchat',
+      'postchat_section_chat'
     );
 }
 add_action('admin_init', 'postchat_settings_init');

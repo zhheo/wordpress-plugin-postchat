@@ -1,100 +1,107 @@
-=== PostChat ===
+=== 洪墨AI（PostChat） ===
  
 Contributors: zhheo
 Tags: AI,PostChat,HongMo,Customer Service,GPT
 Donate link: https://rewards.zhheo.com/
 Tested up to: 6.8
-Stable tag: 3.0
+Stable tag: 3.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
   
-An AI tool plugin for delivering web content-based knowledge base conversations and searches.
+一个人工智能工具插件，用于提供基于网站内容的摘要生成、知识库对话和搜索。
   
 == Description ==
+  
+PostChat插件支持将你的网站内容添加到知识库，并且支持访客通过知识库来与AI进行对话，并且支持AI搜索功能。还可以为你的博客文章生成AI摘要，让用户更方便的知道这个文章讲了什么。是一个让你的网站升级成为AI站点的绝佳插件。
 
-** This plugin is only available in Chinese and only operates in mainland China! **
+** 目前只支持中文和中国大陆地区使用。 **
 
-The PostChat plugin supports adding your website content to the knowledge base and supports visitors to talk to AI through the knowledge base and supports AI search function. It can also generate AI summaries for your blog posts, making it easier for users to know what this post is about. It's a great plugin to upgrade your site to an AI site. Currently only supports Chinese and operates in mainland China.
-
-![](https://bu.dusays.com/2024/12/16/675fda0c40691.jpeg)
+![](https://img.zhheo.com/i/2024/06/21/6674f00f3eb9d.webp)
 
 ## PostChat
 
-PostChat's WordPress plugin, which also supports post summarization users
+PostChat的WordPress插件，也支持文章摘要用户使用
 
-## Features
+## 功能
 
-This plugin supports PostChat users and post digest users. Post Summary users can turn off the "Smart Dialog" feature in the plugin settings.
+这个插件支持PostChat用户和文章摘要用户使用。文章摘要用户可以在插件设置中关闭“智能对话”功能即可。
 
-- Article Summary Generation
-- Article Knowledge Base Function
-- Article Knowledge Base Conversation Function
-- Article AI search function
+- 文章摘要生成功能
+- 文章知识库功能
+- 文章知识库对话功能
+- 文章AI搜索功能
 
-More features can be found at: https://ai.tianli0.top/
+更多功能可以参见：https://ai.tianli0.top/
 
-## This Plugin in Wordpress
+## 本插件在Wordpress中的表现
 
-[Preview address](https://wp.zhheo.com/index.php/2024/07/09/dongporou/)
+[预览地址](https://wp.zhheo.com/index.php/2024/07/09/dongporou/)
 
-## PostChat in more websites
+## PostChat在更多网站中的表现
 
-[Heo](https://blog.zhheo.com/)
+[张洪Heo](https://blog.zhheo.com/)
 
 [Tianli](https://tianli-blog.club/)
 
-## Plugin configuration
+## 插件配置
 
-Click "Settings" on the left, select "PostChat".
+点击左侧的“设置”，选择“PostChat”
 
 ![help1.webp](https://img.zhheo.com/i/2024/07/09/668cb3e669711.webp)
 
-## Theme Adaptation
+## 主题适配
 
-This plugin supports all PostChat development APIs, providing theme developers with control over PostChat. Including dark mode switching: `postChatUser.setPostChatTheme('dark')`; chat window input box: `postChatUser.setPostChatInput(content)` and so on.
+此插件支持所有的PostChat开发API，提供主题开发者对于PostChat的控制能力。包括深色模式切换：`postChatUser.setPostChatTheme('dark')`；聊天窗口输入框：`postChatUser.setPostChatInput(content)`等。
 
-See the developer documentation for more details: https://postchat.zhheo.com/advanced/theme.html
+详见开发者文档：https://postchat.zhheo.com/advanced/theme.html
 
-## Developer
+## 开发者
 
-PostChat is built by [Zhang Hong Heo](https://github.com/zhheo) and [Tianli](https://github.com/TIANLI0), for technical support, please contact: zhheo@qq.com (reply within one working day)
+PostChat由[张洪Heo](https://github.com/zhheo)与[Tianli](https://github.com/TIANLI0)共同构建，技术支持请联系：zhheo@qq.com（一个工作日内回复）
   
 == Frequently Asked Questions ==
   
-= How do I use this plugin? =
+= 我如何使用这个插件？ =
+  
+安装插件成功后，前往 https://ai.tianli0.top/ 去注册一个账号，在开通会员后即可获取到项目KEY，进入插件设置界面替换项目KEY为自己的项目KEY即可。
+产品使用文档：https://postchat.zhheo.com/newUser.html
 
-After successfully installing the plugin, go to https://ai.tianli0.top/ to register an account, you can get the account KEY after opening the membership, enter the plugin setting interface to replace the account KEY with your own account KEY.
-Product documentation: https://postchat.zhheo.com/newUser.html
+= PostChat是如何定价的？ =
 
-= How is PostChat priced? =
+PostChat插件为PostChat会员和摘要AI两款产品的用户服务。
 
-The PostChat plugin serves users of both PostChat Membership and Abstract AI products.
+使用摘要AI用户（https://summary.zhheo.com/）可以享受生成文章摘要的功能，费用为10CNY/50000tokens
 
-With Abstract AI users (https://summary.zhheo.com/) can enjoy the feature of generating article abstracts for 10CNY/50000tokens
-
-Using PostChat member users enjoy unlimited tokens credit of Abstract AI and support advanced functions such as dialog and search, the cost is 18CNY/month or 128CNY/year
+使用PostChat会员用户享受摘要AI的无限制Tockens额度，并支持对话、搜索等高级功能，费用为18CNY/月或128CNY/年
   
 == Screenshots ==
-1. Wake up PostChat main interface
-2. PostChat's Knowledge Base dialog function
-3. PostChat's search function
-4. PostChat's Abstract AI feature, which can generate abstracts for posts to be displayed at the top of the post.
+1. 唤醒PostChat主界面
+2. PostChat的知识库对话功能
+3. PostChat的搜索功能
+4. PostChat的摘要AI功能，可以为文章生成摘要在文章顶部展示
 
 == External services ==
 
-This plugin connects web page content to TianliGPT to obtain AI-generated summary information. Every time a web page is loaded, it sends a portion of the content (filtered and processed based on the website owner’s rules) to TianliGPT and retrieves article summary services. Users need an account key from PostChat to access this service. (Official website: https://postchat.zhheo.com/)
+此插件将网页内容连接到TianliGPT获取AI摘要信息。每次加载网页时，它都会发送当前网页中经过网站站长的规则筛选处理的部分的内容给TianliGPT，并获取来自TianliGPT的文章摘要总结内容服务。用户需要使用来自PostChat的项目KEY才可以使用。（官网地址：https://postchat.zhheo.com/）
 
-External resource links involved in the service:
+服务涉及到的外部资源链接：
 - https://ai.tianli0.top/static/public/postChatUser_summary.min.css
 - https://ai.tianli0.top/static/public/postChatUser_summary.min.js
 - https://ai.tianli0.top/static/public/tianli_gpt.min.js
 -	https://ai.tianli0.top/static/public/postChatUser.min.js
 
-This service is provided by “Honghui Technology.”
+此服务由“洪绘科技”提供。
 
-[User Agreement](https://ai.tianli0.top/static/Agreement.html) [Privacy Policy](https://ai.tianli0.top/static/PrivacyPolice.html)
+[用户协议](https://ai.tianli0.top/static/Agreement.html) [隐私政策](https://ai.tianli0.top/static/PrivacyPolice.html)
   
 == Changelog ==
+= 3.2 =
+支持开启热词功能（默认开启，需要PostChat会员）
+
+= 3.1 =
+私有化摘要支持自定义开头语
+支持自定义摘要插入位置，并支持隐藏摘要组件
+
 = 3.0 =
 支持私有化摘要
 
@@ -109,7 +116,7 @@ This service is provided by “Honghui Technology.”
 此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
 
 = 2.1.3 =
-The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
+全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 项目KEY 才能正常使用。
 
 == Upgrade Notice ==
 = 2.3 =
@@ -120,5 +127,5 @@ The newly released PostChat plugin supports web content knowledge base dialog an
 此举有效解决在子比等一些特殊主题使用css的>符号造成的样式冲突
 
 = 2.1.3 =
-The newly released PostChat plugin supports web content knowledge base dialog and search functionality. After the first installation, you need to configure the account KEY in the backend to use it properly.
+全新发布的 PostChat 插件，支持网站内容知识库对话及搜索功能。首次安装后需要在后台配置 项目KEY 才能正常使用。
 
